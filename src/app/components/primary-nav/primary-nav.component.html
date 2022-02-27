@@ -1,0 +1,19 @@
+<nav class="f-row justify-space-between">
+    <ul class="nav-links">
+        <li class="navbar-menu">
+            <mat-icon>menu</mat-icon>
+        </li>
+        <li>
+            <a class="home" [routerLink]="['']">Home</a>
+        </li>
+        <li>
+            <a [routerLink]="['/product-listing']">Product Listing</a>
+        </li>
+    </ul>
+    
+    <div class="f-col h-100 justify-center">
+        <button class="cart" mat-raised-button [matBadge]="count" [matBadgeHidden]="count === 0" matBadgeColor="accent" (click)="openCart()">
+            <mat-icon>shopping_cart</mat-icon> My Cart
+        </button>
+    </div>
+</nav>

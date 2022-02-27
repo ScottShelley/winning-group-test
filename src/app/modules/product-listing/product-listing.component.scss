@@ -1,0 +1,52 @@
+:host {
+    .grid {
+        display: grid;
+        grid-template-columns: repeat(4, 1fr);
+        grid-gap: 1em;
+        justify-items: center;
+    }
+
+    .grid-column-3 {
+        grid-template-columns: repeat(3, 1fr);
+    }
+
+    .grid-column-2 {
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+    .grid-column-1 {
+        grid-template-columns: repeat(1, 1fr);
+    }
+
+    .card {
+        .top-content {
+            padding: 0 20px;
+            padding-bottom: 30px;
+            border-bottom-width: 1px;
+            border-bottom-style: solid;
+
+            .img {
+                margin-bottom: 20px;
+            }
+        }
+        .content {
+            margin-bottom: 20px;
+
+            .price {
+                font-size: 2em;
+            }
+
+            .actions {
+                margin-top: 10px;
+            }
+        }
+    }
+
+    .padding-top-bottom {
+        padding: 0 15px;
+    }
+
+    mat-progress-bar {
+        margin-top: 5em;
+    }
+}

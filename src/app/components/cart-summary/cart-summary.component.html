@@ -1,0 +1,47 @@
+<div class="f-row justify-space-between">
+    <h2 mat-dialog-title>Cart Summary</h2>
+    <button mat-icon-button mat-dialog-close>
+        <mat-icon>clear</mat-icon>
+    </button>
+</div>
+<mat-divider></mat-divider>
+
+<ng-container *ngIf="cartList$ | async as cartList">
+    <ng-container *ngIf="cartList.length > 0; else emptyCartRef">
+        <ng-container *ngFor="let item of cartList">
+            <div class="f-col cart-list">
+                <div class="f-row justify-space-between">
+                    <img mat-card-sm-image [src]="item.product.image" [alt]="item.product.name">
+                    <div class="f-col middle-item">
+                        <p>{{ item.product.name }}</p>
+                        <mat-button-toggle-group name="count">
+                            <mat-button-toggle (click)="minus(item.product)">
+                                <mat-icon>remove</mat-icon>
+                            </mat-button-toggle>
+                            <mat-button-toggle>{{ item.count }}</mat-button-toggle>
+                            <mat-button-toggle (click)="plus(item.product)">
+                                <mat-icon>add</mat-icon>
+                            </mat-button-toggle>
+                        </mat-button-toggle-group>
+                        <button class="remove" mat-stroked-button (click)="remove(item.product)">Remove</button>
+                    </div>
+                    <div class="price ver-middle primary-colour">${{ item.product.price * item.count }}</div>
+                </div>
+            </div>
+            <mat-divider></mat-divider>
+        </ng-container>
+
+        <div class="f-row justify-around cart-footer">
+            <button mat-stroked-button (click)="clearCart()">Clear Cart</button>
+            <div class="f-row">
+                <div class="ver-middle">Total:</div>&nbsp;
+                <div class="price ver-middle primary-colour">${{ totalPrice$ | async }}</div>
+            </div>
+        </div>
+    </ng-container>
+</ng-container>
+<ng-template #emptyCartRef>
+    <p class="text-center cart-footer">
+        Your cart is empty!
+    </p>
+</ng-template>

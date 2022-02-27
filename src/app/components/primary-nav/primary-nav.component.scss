@@ -1,0 +1,25 @@
+nav {
+    height: 70px;
+    align-items: center;
+
+    .nav-links {
+        list-style: none;
+
+        li {
+            display: inline;
+            padding: 0px 20px;
+
+            a {
+                transition: all 0.3s ease 0s;
+            }
+        }
+
+        .navbar-menu {
+            display: none;
+        }
+    }
+
+    .cart {
+        margin: 0 20px;
+    }
+}

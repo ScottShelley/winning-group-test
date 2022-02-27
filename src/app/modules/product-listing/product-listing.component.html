@@ -1,0 +1,34 @@
+<main class="text-center">
+    <h1>Product Listing</h1>
+    <p>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Facere voluptates deleniti rem molestias perferendis
+        quidem minus repudiandae unde necessitatibus quo, quaerat nihil perspiciatis, ipsa itaque dicta, quos eum!
+        Fugit, error?</p>
+</main>
+
+<ng-container *ngIf="loading$ | async; else finishLoadingRef">
+    <mat-progress-bar mode="indeterminate"></mat-progress-bar>
+</ng-container>
+<ng-template #finishLoadingRef>
+    <section class="grid grid-column-{{ breakpoint }}">
+        <article *ngFor="let item of productList$ | async">
+            <mat-card class="card">
+                <mat-card-content class="top-content grey-border-colour">
+                    <img class="img" [src]="item.image">
+                    <mat-card-subtitle class="text-center">{{ item.name }}</mat-card-subtitle>
+                </mat-card-content>
+                <mat-card-footer class="content footer padding-top-bottom">
+                    <div class="f-col">
+                        <div class="f-row justify-space-between padding-top-bottom">
+                            <div class="primary-colour price">${{ item.price }}</div>
+                            <div class="secondary-colour">${{ item.rrp - item.price }} off PPR of {{ item.rrp }}</div>
+                        </div>
+                        <div class="f-row justify-center actions">
+                            <button mat-raised-button color="primary" (click)="addToCart(item)">Add to Cart</button>
+                            <button mat-stroked-button>Compare</button>
+                        </div>
+                    </div>
+                </mat-card-footer>
+            </mat-card>
+        </article>
+    </section>
+</ng-template>

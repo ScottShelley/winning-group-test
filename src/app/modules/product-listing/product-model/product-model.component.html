@@ -1,0 +1,19 @@
+<h2 class="text-center" mat-dialog-title>Added To Cart</h2>
+<mat-dialog-content class="text-center">
+    <p>Item added to your cart!</p>
+    <p>{{ product.name }}</p>
+    <mat-button-toggle-group name="count">
+        <mat-button-toggle (click)="minus()">
+            <mat-icon>remove</mat-icon>
+        </mat-button-toggle>
+        <mat-button-toggle>{{ count$ | async }}</mat-button-toggle>
+        <mat-button-toggle (click)="plus()">
+            <mat-icon>add</mat-icon>
+        </mat-button-toggle>
+    </mat-button-toggle-group>
+    <button class="remove" mat-stroked-button mat-dialog-close (click)="remove()">Remove</button>
+</mat-dialog-content>
+<mat-dialog-actions align="end">
+    <button mat-button mat-dialog-close (click)="openCart()">View Cart</button>
+    <button mat-raised-button mat-dialog-close color="primary">Close</button>
+</mat-dialog-actions>
