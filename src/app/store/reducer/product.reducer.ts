@@ -21,7 +21,7 @@ export function getInitalState(): ProductState {
     return {
       loading: true,
       productList: [],
-      cartList: cartList
+      cartList: cartList ? cartList : []
     }
   } catch {
     return {
