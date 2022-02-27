@@ -1,6 +1,14 @@
-# WinningGroupTest
+# Winning Group Test
 
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 13.2.5.
+
+## HostSite
+
+https://winning-group-test.firebaseapp.com
+
+## Code coverage report
+
+https://winning-group-test.firebaseapp.com/assets/coverage/winning-group-test/index.html
 
 ## Development server
 
