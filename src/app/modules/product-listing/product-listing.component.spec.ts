@@ -67,26 +67,6 @@ describe('ProductListingComponent', () => {
     });
   });
 
-  it('should be showing progress bar', () => {
-    const mockStore = TestBed.inject(MockStore);
-    const mockHomeState = mockStore.overrideSelector(
-      productLoading,
-      true
-    );
-    mockStore.refreshState();
-
-    fixture = TestBed.createComponent(ProductListingComponent);
-    fixture.detectChanges();
-    
-    fixture.whenStable().then(() => {
-      fixture.detectChanges();
-
-      const progressBar = fixture.debugElement.query(By.css('mat-progress-bar'));
-
-      expect(progressBar).toBeTruthy();
-    });
-  });
-
   it('should call setBreakpoint', () => {
     const spy = spyOn(component, 'setBreakpoint');
     component.onResize()
@@ -110,7 +90,9 @@ describe('ProductListingComponent', () => {
   it('should open ProductModelComponent dialog', () => {
     const spy = spyOn(TestBed.inject(MatDialog), 'open');
 
-    component.addToCart(TEST_DATA[0]);
+    // component.addToCart(TEST_DATA[0]);
+    const button = fixture.debugElement.query(By.css('button[color="primary"]'));
+    button.nativeElement.click();
 
     expect(spy).toHaveBeenCalledWith(ProductModelComponent, { data: TEST_DATA[0] });
   });

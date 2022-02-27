@@ -6,7 +6,7 @@ import { Observable, of, skip, throwError } from 'rxjs';
 import { ProductService } from '@services/product.service';
 import { TEST_DATA } from '@services/product.service.spec';
 import { AddToCart, LoadProductsFailure, LoadProductsLoading, LoadProductsSuccess, ProductActionTypes } from '@store/actions/product.actions';
-import { cartList } from '@store/selector/product.selectors';
+import { cartList, productList } from '@store/selector/product.selectors';
 
 import { ProductEffects } from '@store/effects/product.effects';
 
@@ -36,6 +36,10 @@ describe('ProductEffects', () => {
                   product: TEST_DATA[2]
                 }
               ]
+            },
+            {
+              selector: productList,
+              value: []
             },
           ],
         }),
@@ -79,7 +83,7 @@ describe('ProductEffects', () => {
     });
   });
 
-  it('should be avle to save cart to localStorage', () => {
+  it('should be able to save cart to localStorage', () => {
     // create an actions stream and immediately dispatch a GET action
     actions$ = of({ type: ProductActionTypes.AddToCart });
 
